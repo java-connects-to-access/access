@@ -85,6 +85,11 @@ If you'd like to contribute to this project, please follow the guidelines below:
     # example
     git checkout -b sarmiento_crazyFeature
     ```
+    
+    * If the repo is on your local machine fetch the `main` branch to update any changes
+     ```bash
+    git pull origin main
+    ```
 4. As much as possible write code following the [Javadoc documentation style.](https://www.oracle.com/ph/technical-resources/articles/java/javadoc-tool.html#format) to help other contributors  & members understand the functionality.
     ```
     /**
@@ -127,8 +132,8 @@ A big thank you to the hardworking individuals who have contributed to the succe
 
 ### Developers
 
-* Rendel Abainza
-* Ruzel Alano
+* [Rendel Abainza](https://github.com/RAbnza)
+* [Ruzel Alano](https://github.com/Crounous)
 * [Meinard Francisco](https://github.com/znarfm)
 * [Anthony John Hinay](https://github.com/yam-111)
 * Alvin Feliciano
