@@ -7,9 +7,14 @@
 package finalproj;
 
 import java.io.File;
+import java.sql.*;
+import javax.swing.*;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  *
@@ -54,10 +59,10 @@ public class StudentRecords extends javax.swing.JFrame {
         labelAddSex = new javax.swing.JLabel();
         textAddSex = new javax.swing.JTextField();
         labelAddDOB = new javax.swing.JLabel();
-        dateAddDOB = new com.github.lgooddatepicker.components.DatePicker();
         labelAddEnrollment = new javax.swing.JLabel();
-        dateAddEnrollment = new com.github.lgooddatepicker.components.DatePicker();
         buttonAdd = new javax.swing.JButton();
+        textAddDateOfBirth = new javax.swing.JTextField();
+        textAddEnrollmentDate = new javax.swing.JTextField();
         panelView = new javax.swing.JPanel();
         labelViewID = new javax.swing.JLabel();
         textViewID = new javax.swing.JTextField();
@@ -76,9 +81,7 @@ public class StudentRecords extends javax.swing.JFrame {
         labelViewSex = new javax.swing.JLabel();
         textViewSex = new javax.swing.JTextField();
         labelViewDOB = new javax.swing.JLabel();
-        dateViewDOB = new com.github.lgooddatepicker.components.DatePicker();
         labelViewEnrollment = new javax.swing.JLabel();
-        dateViewEnrollment = new com.github.lgooddatepicker.components.DatePicker();
         buttonSearch = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
 
@@ -209,14 +212,24 @@ public class StudentRecords extends javax.swing.JFrame {
 
         labelAddDOB.setText("Date of Birth");
 
-        dateAddDOB.setName("date of birth"); // NOI18N
-
         labelAddEnrollment.setText("Enrollment Date");
 
         buttonAdd.setText("Add Student");
         buttonAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAddActionPerformed(evt);
+            }
+        });
+
+        textAddDateOfBirth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textAddDateOfBirthActionPerformed(evt);
+            }
+        });
+
+        textAddEnrollmentDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textAddEnrollmentDateActionPerformed(evt);
             }
         });
 
@@ -239,16 +252,16 @@ public class StudentRecords extends javax.swing.JFrame {
                     .addComponent(labelAddDOB))
                 .addGap(44, 44, 44)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dateAddEnrollment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textAddProgram, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textAddAddress, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textAddPhone, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textAddMail, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textAddSex, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateAddDOB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textAddID, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textAddID, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                     .addComponent(textAddFirst)
-                    .addComponent(textAddLast))
+                    .addComponent(textAddLast)
+                    .addComponent(textAddDateOfBirth)
+                    .addComponent(textAddEnrollmentDate))
                 .addContainerGap())
             .addGroup(panelAddLayout.createSequentialGroup()
                 .addGap(83, 83, 83)
@@ -293,11 +306,11 @@ public class StudentRecords extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAddDOB)
-                    .addComponent(dateAddDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                    .addComponent(textAddDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAddEnrollment)
-                    .addComponent(dateAddEnrollment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textAddEnrollmentDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -378,11 +391,7 @@ public class StudentRecords extends javax.swing.JFrame {
 
         labelViewDOB.setText("Date of Birth");
 
-        dateViewDOB.setEnabled(false);
-
         labelViewEnrollment.setText("Enrollment Date");
-
-        dateViewEnrollment.setEnabled(false);
 
         buttonSearch.setText("Search by ID");
         buttonSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -417,13 +426,11 @@ public class StudentRecords extends javax.swing.JFrame {
                     .addComponent(labelViewDOB))
                 .addGap(44, 44, 44)
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dateViewEnrollment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textViewProgram, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textViewAddress, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textViewPhone, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textViewMail, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textViewSex, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateViewDOB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textViewID, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textViewFirst)
                     .addComponent(textViewLast))
@@ -471,13 +478,9 @@ public class StudentRecords extends javax.swing.JFrame {
                     .addComponent(labelViewSex)
                     .addComponent(textViewSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelViewDOB)
-                    .addComponent(dateViewDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelViewEnrollment)
-                    .addComponent(dateViewEnrollment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(labelViewDOB)
+                .addGap(13, 13, 13)
+                .addComponent(labelViewEnrollment)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -584,6 +587,14 @@ public class StudentRecords extends javax.swing.JFrame {
         showDatabaseTable();
     }//GEN-LAST:event_buttonShowActionPerformed
 
+    private void textAddDateOfBirthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddDateOfBirthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textAddDateOfBirthActionPerformed
+
+    private void textAddEnrollmentDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddEnrollmentDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textAddEnrollmentDateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -624,12 +635,16 @@ public class StudentRecords extends javax.swing.JFrame {
     
     // FUNCTIONS
     // Function for file handling
+    
     private void openFile() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(new FileNameExtensionFilter("Microsoft Access Database (.accdb)", "accdb"));
         int response = fileChooser.showOpenDialog(null);
         if (response == JFileChooser.APPROVE_OPTION) {
             file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+            
+            filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            
             openedFileName = file.getName();
             if (!openedFileName.endsWith(".accdb")) {
                 JOptionPane.showMessageDialog(null, "The selected file is not an Access Database (.accdb) file.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -641,13 +656,101 @@ public class StudentRecords extends javax.swing.JFrame {
     }
     
     // Show Database function
-    private void showDatabaseTable() {
-        
-    }
+private void showDatabaseTable() {
+        String query;
+        String access_db_table = "table1";
+        DefaultTableModel tableModel = new DefaultTableModel();
+   	PreparedStatement preparedStatement = null;
+    	ResultSet resultSet = null;
+
+        try {
+            con = DriverManager.getConnection("jdbc:ucanaccess://" + filePath);
+            query = String.format("SELECT * FROM %s", access_db_table);
+           preparedStatement = con.prepareStatement(query);
+           resultSet = preparedStatement.executeQuery();
+
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int columns = metaData.getColumnCount();
+
+            // Add column names to the table model
+            for (int i = 1; i <= columns; i++) {
+                tableModel.addColumn(metaData.getColumnName(i));
+            }
+
+            // Add data rows to the table model
+            while (resultSet.next()) {
+                Object[] rowData = new Object[columns];
+                for (int i = 1; i <= columns; i++) {
+                    rowData[i - 1] = resultSet.getString(i);
+                }
+                tableModel.addRow(rowData);
+            }
+
+            // Create a JTable with the populated table model
+            JTable table = new JTable(tableModel);
+
+            // Display the table in a JFrame with JScrollPane
+            JFrame frame = new JFrame("Table Data");
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.getContentPane().add(new JScrollPane(table));
+            frame.pack();
+            frame.setLocationRelativeTo(null); // Center the frame
+            frame.setVisible(true);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            // Close resources (PreparedStatement, ResultSet, Connection) in a finally block if needed
+            try {
+                if (con != null) con.close();
+            } 
+	    catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+ }
+
     
-    // Function for adding a student record
+    
+ 
+    
     private void addStudent(){
         
+        String q1, q2, q3, q4, q5, q6, q7, q8, q9, q10;
+        
+        //Storing Values of Input in a String
+        q1 = textAddID.getText();
+        q2 = textAddFirst.getText();
+        q3 = textAddLast.getText();
+        q4 = textAddProgram.getText();
+        q5 = textAddAddress.getText();
+        q6 = textAddPhone.getText();
+        q7 = textAddMail.getText();
+        q8 = textAddSex.getText();
+        q9 = textAddDateOfBirth.getText();
+        q10 = textAddEnrollmentDate.getText();
+        
+        try{
+            //Connecting to Database
+            con = DriverManager.getConnection("jdbc:ucanaccess://"+filePath);
+            Statement st = con.createStatement();
+            
+            //Inserting the Inputs in the Database
+            int a = st.executeUpdate("Insert into Table1 values('"+q2+"','"+q3+"','"+q4+"','"+q5+"','"+q6+"','"+q7+"','"+q8+"','"+q1+"','"+q9+"','"+q10+"')");
+            
+            //Checking if the inputs are properly added
+            if(a == 1){
+                JOptionPane.showMessageDialog(this, "Student Record Added");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Error in Inserting Data", "Insertion Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        //If there's an error in connecting to Database
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);    
+        }
     }
     
     // Function for searching a student record by ID
@@ -661,8 +764,10 @@ public class StudentRecords extends javax.swing.JFrame {
     }
     
     // User Variables
+    private String filePath;
     private String openedFileName;
     private File file;
+    private Connection con;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdd;
@@ -670,10 +775,6 @@ public class StudentRecords extends javax.swing.JFrame {
     private javax.swing.JButton buttonOpen;
     private javax.swing.JButton buttonSearch;
     private javax.swing.JButton buttonShow;
-    private com.github.lgooddatepicker.components.DatePicker dateAddDOB;
-    private com.github.lgooddatepicker.components.DatePicker dateAddEnrollment;
-    private com.github.lgooddatepicker.components.DatePicker dateViewDOB;
-    private com.github.lgooddatepicker.components.DatePicker dateViewEnrollment;
     private javax.swing.JLabel labelAddAddress;
     private javax.swing.JLabel labelAddCourse;
     private javax.swing.JLabel labelAddDOB;
@@ -700,6 +801,8 @@ public class StudentRecords extends javax.swing.JFrame {
     private javax.swing.JPanel panelTitle;
     private javax.swing.JPanel panelView;
     private javax.swing.JTextField textAddAddress;
+    private javax.swing.JTextField textAddDateOfBirth;
+    private javax.swing.JTextField textAddEnrollmentDate;
     private javax.swing.JTextField textAddFirst;
     private javax.swing.JTextField textAddID;
     private javax.swing.JTextField textAddLast;
@@ -716,5 +819,9 @@ public class StudentRecords extends javax.swing.JFrame {
     private javax.swing.JTextField textViewProgram;
     private javax.swing.JTextField textViewSex;
     // End of variables declaration//GEN-END:variables
+
+    private String getFilePathString(File file) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

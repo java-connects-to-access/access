@@ -103,11 +103,11 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="labelFileOpen">
           <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value=" "/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value=" "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="buttonOpen">
@@ -128,10 +128,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelTitle">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Student Records"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="24" style="1"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="Student Records"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -166,13 +166,11 @@
                   </Group>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="dateAddEnrollment" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddProgram" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddAddress" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddPhone" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddMail" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddSex" alignment="0" max="32767" attributes="0"/>
-                      <Component id="dateAddDOB" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddID" min="-2" pref="190" max="-2" attributes="0"/>
                       <Component id="textAddFirst" alignment="1" max="32767" attributes="0"/>
                       <Component id="textAddLast" alignment="1" max="32767" attributes="0"/>
@@ -230,15 +228,9 @@
                       <Component id="textAddSex" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelAddDOB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dateAddDOB" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelAddEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dateAddEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="labelAddDOB" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  <Component id="labelAddEnrollment" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="buttonAdd" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -332,17 +324,10 @@
             <Property name="text" type="java.lang.String" value="Date of Birth"/>
           </Properties>
         </Component>
-        <Component class="com.github.lgooddatepicker.components.DatePicker" name="dateAddDOB">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="date of birth" noResource="true"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="labelAddEnrollment">
           <Properties>
             <Property name="text" type="java.lang.String" value="Enrollment Date"/>
           </Properties>
-        </Component>
-        <Component class="com.github.lgooddatepicker.components.DatePicker" name="dateAddEnrollment">
         </Component>
         <Component class="javax.swing.JButton" name="buttonAdd">
           <Properties>
@@ -384,13 +369,11 @@
                   </Group>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="dateViewEnrollment" alignment="0" max="32767" attributes="0"/>
                       <Component id="textViewProgram" alignment="0" max="32767" attributes="0"/>
                       <Component id="textViewAddress" alignment="0" max="32767" attributes="0"/>
                       <Component id="textViewPhone" alignment="0" max="32767" attributes="0"/>
                       <Component id="textViewMail" alignment="0" max="32767" attributes="0"/>
                       <Component id="textViewSex" alignment="0" max="32767" attributes="0"/>
-                      <Component id="dateViewDOB" alignment="0" max="32767" attributes="0"/>
                       <Component id="textViewID" min="-2" pref="190" max="-2" attributes="0"/>
                       <Component id="textViewFirst" alignment="1" max="32767" attributes="0"/>
                       <Component id="textViewLast" alignment="1" max="32767" attributes="0"/>
@@ -450,15 +433,9 @@
                       <Component id="textViewSex" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelViewDOB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dateViewDOB" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelViewEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dateViewEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="labelViewDOB" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  <Component id="labelViewEnrollment" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="buttonSearch" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
@@ -576,19 +553,9 @@
             <Property name="text" type="java.lang.String" value="Date of Birth"/>
           </Properties>
         </Component>
-        <Component class="com.github.lgooddatepicker.components.DatePicker" name="dateViewDOB">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="labelViewEnrollment">
           <Properties>
             <Property name="text" type="java.lang.String" value="Enrollment Date"/>
-          </Properties>
-        </Component>
-        <Component class="com.github.lgooddatepicker.components.DatePicker" name="dateViewEnrollment">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="buttonSearch">
