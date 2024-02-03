@@ -24,7 +24,10 @@ public class StudentRecords extends javax.swing.JFrame {
 
     /** Creates new form GUI */
     public StudentRecords() {
+        
         initComponents();
+        this.showDatabaseTableButton();
+        
     }
 
     /** This method is called from within the constructor to
@@ -518,6 +521,7 @@ public class StudentRecords extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void buttonOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOpenActionPerformed
         openFile();
     }//GEN-LAST:event_buttonOpenActionPerformed
@@ -634,6 +638,14 @@ public class StudentRecords extends javax.swing.JFrame {
     }
     
     // FUNCTIONS
+    
+    // showDatabaseTableButton
+    
+    private void showDatabaseTableButton(){
+       /*sets the showDatabaseTable button if user doesnt input db**/
+        if(filePath.equals("")) buttonShow.setEnabled(false);
+        else buttonShow.setEnabled(true);
+    }
     // Function for file handling
     
     private void openFile() {
@@ -651,6 +663,7 @@ public class StudentRecords extends javax.swing.JFrame {
             } else {
                 labelFileOpen.setText(openedFileName);
                 System.out.println("Opened file path: " + file);
+                this.showDatabaseTableButton();
             }
         }
     }
@@ -662,7 +675,9 @@ private void showDatabaseTable() {
         DefaultTableModel tableModel = new DefaultTableModel();
    	PreparedStatement preparedStatement = null;
     	ResultSet resultSet = null;
-
+        
+       
+        
         try {
             con = DriverManager.getConnection("jdbc:ucanaccess://" + filePath);
             query = String.format("SELECT * FROM %s", access_db_table);
@@ -764,7 +779,7 @@ private void showDatabaseTable() {
     }
     
     // User Variables
-    private String filePath;
+    private String filePath = "";
     private String openedFileName;
     private File file;
     private Connection con;
