@@ -46,8 +46,8 @@
               <Component id="panelTitle" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="panelView" max="32767" attributes="0"/>
                   <Component id="panelAdd" max="32767" attributes="0"/>
+                  <Component id="panelView" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -121,6 +121,7 @@
         <Component class="javax.swing.JButton" name="buttonShow">
           <Properties>
             <Property name="text" type="java.lang.String" value="Show Database"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonShowActionPerformed"/>
@@ -166,21 +167,21 @@
                   </Group>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="dateAddEnrollment" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddProgram" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddAddress" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddPhone" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddMail" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddSex" alignment="0" max="32767" attributes="0"/>
-                      <Component id="dateAddDOB" alignment="0" max="32767" attributes="0"/>
                       <Component id="textAddID" min="-2" pref="190" max="-2" attributes="0"/>
                       <Component id="textAddFirst" alignment="1" max="32767" attributes="0"/>
                       <Component id="textAddLast" alignment="1" max="32767" attributes="0"/>
+                      <Component id="textAddDOB" alignment="0" max="32767" attributes="0"/>
+                      <Component id="textAddEnrollment" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                   <Component id="buttonAdd" min="-2" pref="159" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -231,15 +232,15 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="textAddDOB" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="labelAddDOB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dateAddDOB" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelAddEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dateAddEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="textAddEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelAddEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="buttonAdd" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -253,6 +254,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textAddID">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textAddIDActionPerformed"/>
           </Events>
@@ -263,6 +267,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textAddFirst">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textAddFirstActionPerformed"/>
           </Events>
@@ -273,6 +280,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textAddLast">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textAddLastActionPerformed"/>
           </Events>
@@ -283,6 +293,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textAddProgram">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textAddProgramActionPerformed"/>
           </Events>
@@ -293,6 +306,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textAddAddress">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textAddAddressActionPerformed"/>
           </Events>
@@ -303,6 +319,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textAddPhone">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textAddPhoneActionPerformed"/>
           </Events>
@@ -313,6 +332,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textAddMail">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textAddMailActionPerformed"/>
           </Events>
@@ -323,6 +345,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textAddSex">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textAddSexActionPerformed"/>
           </Events>
@@ -332,21 +357,31 @@
             <Property name="text" type="java.lang.String" value="Date of Birth"/>
           </Properties>
         </Component>
-        <Component class="com.github.lgooddatepicker.components.DatePicker" name="dateAddDOB">
+        <Component class="javax.swing.JTextField" name="textAddDOB">
           <Properties>
-            <Property name="name" type="java.lang.String" value="date of birth" noResource="true"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textAddDOBActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelAddEnrollment">
           <Properties>
             <Property name="text" type="java.lang.String" value="Enrollment Date"/>
           </Properties>
         </Component>
-        <Component class="com.github.lgooddatepicker.components.DatePicker" name="dateAddEnrollment">
+        <Component class="javax.swing.JTextField" name="textAddEnrollment">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textAddEnrollmentActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonAdd">
           <Properties>
             <Property name="text" type="java.lang.String" value="Add Student"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddActionPerformed"/>
@@ -368,41 +403,45 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="labelViewEnrollment" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelViewLast" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelViewFirst" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelViewID" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelViewProgram" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelViewAddress" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelViewPhone" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelViewMail" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelViewSex" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelViewDOB" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="dateViewEnrollment" alignment="0" max="32767" attributes="0"/>
-                      <Component id="textViewProgram" alignment="0" max="32767" attributes="0"/>
-                      <Component id="textViewAddress" alignment="0" max="32767" attributes="0"/>
-                      <Component id="textViewPhone" alignment="0" max="32767" attributes="0"/>
-                      <Component id="textViewMail" alignment="0" max="32767" attributes="0"/>
-                      <Component id="textViewSex" alignment="0" max="32767" attributes="0"/>
-                      <Component id="dateViewDOB" alignment="0" max="32767" attributes="0"/>
-                      <Component id="textViewID" min="-2" pref="190" max="-2" attributes="0"/>
-                      <Component id="textViewFirst" alignment="1" max="32767" attributes="0"/>
-                      <Component id="textViewLast" alignment="1" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="buttonSearch" min="-2" pref="109" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="buttonDelete" min="-2" pref="109" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labelViewLast" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelViewFirst" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelViewID" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelViewProgram" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelViewAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelViewPhone" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelViewMail" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelViewSex" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelViewDOB" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelViewEnrollment" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="textViewProgram" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textViewAddress" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textViewPhone" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textViewMail" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textViewSex" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textViewID" min="-2" pref="190" max="-2" attributes="0"/>
+                              <Component id="textViewFirst" alignment="1" max="32767" attributes="0"/>
+                              <Component id="textViewLast" alignment="1" max="32767" attributes="0"/>
+                              <Component id="textViewDOB" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textViewEnrollment" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="buttonSearch" min="-2" pref="109" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="buttonDelete" min="-2" pref="109" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -451,15 +490,15 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="textViewDOB" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="labelViewDOB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dateViewDOB" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelViewEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dateViewEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="textViewEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelViewEnrollment" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="buttonSearch" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="buttonDelete" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
@@ -476,6 +515,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textViewID">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textViewIDActionPerformed"/>
           </Events>
@@ -576,24 +618,31 @@
             <Property name="text" type="java.lang.String" value="Date of Birth"/>
           </Properties>
         </Component>
-        <Component class="com.github.lgooddatepicker.components.DatePicker" name="dateViewDOB">
+        <Component class="javax.swing.JTextField" name="textViewDOB">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textViewDOBActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelViewEnrollment">
           <Properties>
             <Property name="text" type="java.lang.String" value="Enrollment Date"/>
           </Properties>
         </Component>
-        <Component class="com.github.lgooddatepicker.components.DatePicker" name="dateViewEnrollment">
+        <Component class="javax.swing.JTextField" name="textViewEnrollment">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textViewEnrollmentActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonSearch">
           <Properties>
             <Property name="text" type="java.lang.String" value="Search by ID"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSearchActionPerformed"/>
@@ -602,6 +651,7 @@
         <Component class="javax.swing.JButton" name="buttonDelete">
           <Properties>
             <Property name="text" type="java.lang.String" value="Delete Record"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDeleteActionPerformed"/>
