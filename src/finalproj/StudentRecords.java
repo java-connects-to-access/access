@@ -536,7 +536,7 @@ public class StudentRecords extends JFrame {
             }
         }
     }
-    
+        
     // clear the forms
     private void clearForm(javax.swing.JPanel container){
         for (java.awt.Component component : container.getComponents()) {
@@ -545,7 +545,7 @@ public class StudentRecords extends JFrame {
             }
         }
     }
-    
+
     // Show Database function
     private void showDatabaseTable() {
         String query;
@@ -640,9 +640,19 @@ public class StudentRecords extends JFrame {
             if (a == 1) {
                 JOptionPane.showMessageDialog(this, "Student Record Added");
                 clearForm(panelAdd);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error in Inserting Data", "Insertion Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
-            else{
-                JOptionPane.showMessageDialog(this, "Error in Inserting Data", "Insertion Error", JOptionPane.ERROR_MESSAGE);
+        }
+        // If there's an error in connecting to Database
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        } finally {
+            try {
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -690,16 +700,17 @@ public class StudentRecords extends JFrame {
                 String s8 = rs.getString("DateOfBirth");
                 String s9 = rs.getString("EnrollmentDate");
 
-           } else {
-               // Student not found
-               JOptionPane.showMessageDialog(this, "Student Not Found", "Error", JOptionPane.ERROR_MESSAGE);
-              // Clear the text field or handle accordingly
-               clearForm(panelView);
-           }
-           
-           // Close the result set and statement
-           rs.close();
-           st.close();
+                // Modifying the textfield
+                textViewFirst.setText(s1);
+                textViewLast.setText(s2);
+                textViewProgram.setText(s3);
+                textViewAddress.setText(s4);
+                textViewPhone.setText(s5);
+                textViewMail.setText(s6);
+                textViewSex.setText(s7);
+                textViewDOB.setText(s8);
+                textViewEnrollment.setText(s9);
+                buttonDelete.setEnabled(true);
 
             } else {    // Student not found
                 JOptionPane.showMessageDialog(this, "Student Not Found", "Error", JOptionPane.ERROR_MESSAGE);
@@ -769,10 +780,10 @@ public class StudentRecords extends JFrame {
                     // Deletion of data
                     int result = st.executeUpdate("DELETE FROM Table1 WHERE StudentID='" + idSearch + "'");
 
-                        if (result > 0) {
-                            JOptionPane.showMessageDialog(this, "Student Record Deleted Successfully");
-                            // Clear the text fields or handle accordingly after successful deletion
-                            
+                    if (result > 0) {
+                        JOptionPane.showMessageDialog(this, "Student Record Deleted Successfully");
+                        // Clear the text fields or handle accordingly after successful deletion
+                        clearForm(panelView);
 
                         // Clear other text fields as needed
                     } else {
