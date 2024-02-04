@@ -777,15 +777,17 @@ public class StudentRecords extends JFrame {
                         // Clear other text fields as needed
                     } else {
                         JOptionPane.showMessageDialog(this, "Failed to delete Student Record");
+                        clearForm(panelView);
                     }
                 } else {
                     // User canceled the deletion
                     JOptionPane.showMessageDialog(this, "Deletion canceled by user");
+                    clearForm(panelView);
                 }
             } else {
                 // Student not found
                 JOptionPane.showMessageDialog(this, "Student Not Found");
-                textViewFirst.setText(""); // Clear the text field or handle accordingly
+                clearForm(panelView); // Clear the text field or handle accordingly
             }
         } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "An error occurred while deleting the student record");
