@@ -699,6 +699,15 @@ public class StudentRecords extends javax.swing.JFrame {
         }
     }
     
+    // clear the forms
+    private void clearForm(javax.swing.JPanel container){
+        for (java.awt.Component component : container.getComponents()) {
+            if (component instanceof javax.swing.JTextField) {
+                ((javax.swing.JTextField) component).setText("");
+            }
+        }
+    }
+    
     // Show Database function
     private void showDatabaseTable() {
         String query;
@@ -788,6 +797,7 @@ public class StudentRecords extends javax.swing.JFrame {
             //Checking if the inputs are properly added
             if(a == 1){
                 JOptionPane.showMessageDialog(this, "Student Record Added");
+                clearForm(panelAdd);
             }
             else{
                 JOptionPane.showMessageDialog(this, "Error in Inserting Data", "Insertion Error", JOptionPane.ERROR_MESSAGE);
@@ -847,7 +857,8 @@ public class StudentRecords extends javax.swing.JFrame {
            } else {
                // Student not found
                JOptionPane.showMessageDialog(this, "Student Not Found", "Error", JOptionPane.ERROR_MESSAGE);
-               textViewFirst.setText("");  // Clear the text field or handle accordingly
+              // Clear the text field or handle accordingly
+               clearForm(panelView);
            }
            
            // Close the result set and statement
@@ -911,15 +922,7 @@ public class StudentRecords extends javax.swing.JFrame {
                         if (result > 0) {
                             JOptionPane.showMessageDialog(this, "Student Record Deleted Successfully");
                             // Clear the text fields or handle accordingly after successful deletion
-                            textViewFirst.setText("");
-                            textViewLast.setText("");
-                            textViewProgram.setText("");
-                            textViewAddress.setText("");
-                            textViewPhone.setText("");
-                            textViewMail.setText("");
-                            textViewSex.setText("");
-                            textViewDOB.setText("");
-                            textViewEnrollment  .setText("");
+                            
 
                     // Clear other text fields as needed
                     } else {
