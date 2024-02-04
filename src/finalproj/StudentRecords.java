@@ -1,5 +1,6 @@
 package finalproj;
 
+import java.awt.Image;
 import java.io.File;
 import java.sql.*;
 import javax.swing.JFileChooser;
@@ -8,6 +9,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -17,10 +19,12 @@ public class StudentRecords extends javax.swing.JFrame {
     /** Creates new form GUI */
     public StudentRecords() {
         initComponents();
+        
+      
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         panelTitle = new javax.swing.JPanel();
@@ -76,12 +80,20 @@ public class StudentRecords extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Student Records");
+        setBackground(new java.awt.Color(255, 51, 51));
+        setForeground(java.awt.Color.red);
+        setIconImages(null);
         setResizable(false);
 
+        panelTitle.setBackground(new java.awt.Color(255, 102, 102));
+        panelTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+
+        labelFileOpen.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelFileOpen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelFileOpen.setText(" ");
-        labelFileOpen.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        buttonOpen.setBackground(new java.awt.Color(255, 255, 153));
+        buttonOpen.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         buttonOpen.setText("Open File");
         buttonOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +101,8 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        buttonShow.setBackground(new java.awt.Color(255, 255, 153));
+        buttonShow.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         buttonShow.setText("Show Database");
         buttonShow.setEnabled(false);
         buttonShow.addActionListener(new java.awt.event.ActionListener() {
@@ -97,8 +111,9 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
-        labelTitle.setText("Student Records");
-        labelTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        labelTitle.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        labelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitle.setText("STUDENT RECORDS");
 
         javax.swing.GroupLayout panelTitleLayout = new javax.swing.GroupLayout(panelTitle);
         panelTitle.setLayout(panelTitleLayout);
@@ -126,18 +141,21 @@ public class StudentRecords extends javax.swing.JFrame {
                                 .addGap(12, 12, 12)
                                 .addComponent(labelFileOpen))
                             .addGroup(panelTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(buttonOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(buttonShow, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(buttonOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buttonShow, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelTitleLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(labelTitle)))
                 .addContainerGap())
         );
 
-        panelAdd.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add a New Student Record", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        panelAdd.setBackground(new java.awt.Color(255, 153, 153));
+        panelAdd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
+        labelAddID.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelAddID.setText("Student ID");
 
+        textAddID.setBackground(new java.awt.Color(255, 255, 204));
         textAddID.setEnabled(false);
         textAddID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,8 +163,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelAddFirst.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelAddFirst.setText("First Name");
 
+        textAddFirst.setBackground(new java.awt.Color(255, 255, 204));
         textAddFirst.setEnabled(false);
         textAddFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,8 +174,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelAddLast.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelAddLast.setText("Last Name");
 
+        textAddLast.setBackground(new java.awt.Color(255, 255, 204));
         textAddLast.setEnabled(false);
         textAddLast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,8 +185,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelAddCourse.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelAddCourse.setText("Program");
 
+        textAddProgram.setBackground(new java.awt.Color(255, 255, 204));
         textAddProgram.setEnabled(false);
         textAddProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,8 +196,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelAddAddress.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelAddAddress.setText("Address");
 
+        textAddAddress.setBackground(new java.awt.Color(255, 255, 204));
         textAddAddress.setEnabled(false);
         textAddAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,8 +207,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelAddPhone.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelAddPhone.setText("Phone Number");
 
+        textAddPhone.setBackground(new java.awt.Color(255, 255, 204));
         textAddPhone.setEnabled(false);
         textAddPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,8 +218,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelAddMail.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelAddMail.setText("E-Mail Address");
 
+        textAddMail.setBackground(new java.awt.Color(255, 255, 204));
         textAddMail.setEnabled(false);
         textAddMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,8 +229,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelAddSex.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelAddSex.setText("Sex");
 
+        textAddSex.setBackground(new java.awt.Color(255, 255, 204));
         textAddSex.setEnabled(false);
         textAddSex.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,8 +240,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelAddDOB.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelAddDOB.setText("Date of Birth");
 
+        textAddDOB.setBackground(new java.awt.Color(255, 255, 204));
         textAddDOB.setEnabled(false);
         textAddDOB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,8 +251,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelAddEnrollment.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelAddEnrollment.setText("Enrollment Date");
 
+        textAddEnrollment.setBackground(new java.awt.Color(255, 255, 204));
         textAddEnrollment.setEnabled(false);
         textAddEnrollment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,6 +262,8 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        buttonAdd.setBackground(new java.awt.Color(255, 255, 153));
+        buttonAdd.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         buttonAdd.setText("Add Student");
         buttonAdd.setEnabled(false);
         buttonAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -317,10 +355,13 @@ public class StudentRecords extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelView.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "View or Delete Record", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        panelView.setBackground(new java.awt.Color(255, 153, 153));
+        panelView.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
+        labelViewID.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelViewID.setText("Student ID");
 
+        textViewID.setBackground(new java.awt.Color(255, 255, 204));
         textViewID.setEnabled(false);
         textViewID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,8 +369,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelViewFirst.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelViewFirst.setText("First Name");
 
+        textViewFirst.setBackground(new java.awt.Color(255, 255, 204));
         textViewFirst.setEnabled(false);
         textViewFirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,8 +380,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelViewLast.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelViewLast.setText("Last Name");
 
+        textViewLast.setBackground(new java.awt.Color(255, 255, 204));
         textViewLast.setEnabled(false);
         textViewLast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,8 +391,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelViewProgram.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelViewProgram.setText("Program");
 
+        textViewProgram.setBackground(new java.awt.Color(255, 255, 204));
         textViewProgram.setEnabled(false);
         textViewProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,8 +402,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelViewAddress.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelViewAddress.setText("Address");
 
+        textViewAddress.setBackground(new java.awt.Color(255, 255, 204));
         textViewAddress.setEnabled(false);
         textViewAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,8 +413,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelViewPhone.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelViewPhone.setText("Phone Number");
 
+        textViewPhone.setBackground(new java.awt.Color(255, 255, 204));
         textViewPhone.setEnabled(false);
         textViewPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -373,8 +424,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelViewMail.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelViewMail.setText("E-Mail Address");
 
+        textViewMail.setBackground(new java.awt.Color(255, 255, 204));
         textViewMail.setEnabled(false);
         textViewMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -382,8 +435,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelViewSex.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelViewSex.setText("Sex");
 
+        textViewSex.setBackground(new java.awt.Color(255, 255, 204));
         textViewSex.setEnabled(false);
         textViewSex.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -391,8 +446,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelViewDOB.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelViewDOB.setText("Date of Birth");
 
+        textViewDOB.setBackground(new java.awt.Color(255, 255, 204));
         textViewDOB.setEnabled(false);
         textViewDOB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -400,8 +457,10 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        labelViewEnrollment.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         labelViewEnrollment.setText("Enrollment Date");
 
+        textViewEnrollment.setBackground(new java.awt.Color(255, 255, 204));
         textViewEnrollment.setEnabled(false);
         textViewEnrollment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -409,6 +468,8 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        buttonSearch.setBackground(new java.awt.Color(255, 255, 153));
+        buttonSearch.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         buttonSearch.setText("Search by ID");
         buttonSearch.setEnabled(false);
         buttonSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -417,6 +478,8 @@ public class StudentRecords extends javax.swing.JFrame {
             }
         });
 
+        buttonDelete.setBackground(new java.awt.Color(255, 255, 153));
+        buttonDelete.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         buttonDelete.setText("Delete Record");
         buttonDelete.setEnabled(false);
         buttonDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -532,7 +595,7 @@ public class StudentRecords extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -542,92 +605,92 @@ public class StudentRecords extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void buttonOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOpenActionPerformed
+    private void buttonOpenActionPerformed(java.awt.event.ActionEvent evt) {                                           
         openFile();
-    }//GEN-LAST:event_buttonOpenActionPerformed
+    }                                          
 
-    private void textAddIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddIDActionPerformed
-    }//GEN-LAST:event_textAddIDActionPerformed
+    private void textAddIDActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    }                                         
 
-    private void textAddFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddFirstActionPerformed
-    }//GEN-LAST:event_textAddFirstActionPerformed
+    private void textAddFirstActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    }                                            
 
-    private void textAddLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddLastActionPerformed
-    }//GEN-LAST:event_textAddLastActionPerformed
+    private void textAddLastActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    }                                           
 
-    private void textAddProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddProgramActionPerformed
-    }//GEN-LAST:event_textAddProgramActionPerformed
+    private void textAddProgramActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    }                                              
 
-    private void textAddAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddAddressActionPerformed
-    }//GEN-LAST:event_textAddAddressActionPerformed
+    private void textAddAddressActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    }                                              
 
-    private void textAddPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddPhoneActionPerformed
-    }//GEN-LAST:event_textAddPhoneActionPerformed
+    private void textAddPhoneActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    }                                            
 
-    private void textAddMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddMailActionPerformed
-    }//GEN-LAST:event_textAddMailActionPerformed
+    private void textAddMailActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    }                                           
 
-    private void textAddSexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddSexActionPerformed
-    }//GEN-LAST:event_textAddSexActionPerformed
+    private void textAddSexActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    }                                          
 
-    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
+    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
         addStudent();
-    }//GEN-LAST:event_buttonAddActionPerformed
+    }                                         
 
-    private void textViewIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textViewIDActionPerformed
-    }//GEN-LAST:event_textViewIDActionPerformed
+    private void textViewIDActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    }                                          
 
-    private void textViewFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textViewFirstActionPerformed
-    }//GEN-LAST:event_textViewFirstActionPerformed
+    private void textViewFirstActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    }                                             
 
-    private void textViewLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textViewLastActionPerformed
-    }//GEN-LAST:event_textViewLastActionPerformed
+    private void textViewLastActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    }                                            
 
-    private void textViewProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textViewProgramActionPerformed
-    }//GEN-LAST:event_textViewProgramActionPerformed
+    private void textViewProgramActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    }                                               
 
-    private void textViewAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textViewAddressActionPerformed
-    }//GEN-LAST:event_textViewAddressActionPerformed
+    private void textViewAddressActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    }                                               
 
-    private void textViewPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textViewPhoneActionPerformed
-    }//GEN-LAST:event_textViewPhoneActionPerformed
+    private void textViewPhoneActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    }                                             
 
-    private void textViewMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textViewMailActionPerformed
-    }//GEN-LAST:event_textViewMailActionPerformed
+    private void textViewMailActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    }                                            
 
-    private void textViewSexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textViewSexActionPerformed
-    }//GEN-LAST:event_textViewSexActionPerformed
+    private void textViewSexActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    }                                           
 
-    private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
+    private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {                                             
         searchStudent();
-    }//GEN-LAST:event_buttonSearchActionPerformed
+    }                                            
 
-    private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
+    private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {                                             
         deleteStudent();
-    }//GEN-LAST:event_buttonDeleteActionPerformed
+    }                                            
 
-    private void buttonShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowActionPerformed
+    private void buttonShowActionPerformed(java.awt.event.ActionEvent evt) {                                           
         showDatabaseTable();
-    }//GEN-LAST:event_buttonShowActionPerformed
+    }                                          
 
-    private void textAddDOBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddDOBActionPerformed
+    private void textAddDOBActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }//GEN-LAST:event_textAddDOBActionPerformed
+    }                                          
 
-    private void textAddEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAddEnrollmentActionPerformed
+    private void textAddEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         // TODO add your handling code here:
-    }//GEN-LAST:event_textAddEnrollmentActionPerformed
+    }                                                 
 
-    private void textViewDOBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textViewDOBActionPerformed
+    private void textViewDOBActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
-    }//GEN-LAST:event_textViewDOBActionPerformed
+    }                                           
 
-    private void textViewEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textViewEnrollmentActionPerformed
+    private void textViewEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         // TODO add your handling code here:
-    }//GEN-LAST:event_textViewEnrollmentActionPerformed
+    }                                                  
 
     /**
      * @param args the command line arguments
@@ -949,7 +1012,7 @@ public class StudentRecords extends javax.swing.JFrame {
     private String openedFileName;
     private File file;
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton buttonAdd;
     private javax.swing.JButton buttonDelete;
     private javax.swing.JButton buttonOpen;
@@ -1000,7 +1063,7 @@ public class StudentRecords extends javax.swing.JFrame {
     private javax.swing.JTextField textViewPhone;
     private javax.swing.JTextField textViewProgram;
     private javax.swing.JTextField textViewSex;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 
     private String getFilePathString(File file) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
