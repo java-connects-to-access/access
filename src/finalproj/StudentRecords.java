@@ -1,6 +1,6 @@
 package finalproj;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -21,11 +21,12 @@ public class StudentRecords extends JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {
         // Set icon to PUP logo
-        ImageIcon img = new ImageIcon(getClass().getResource("logo.png"));
         setIconImage(img.getImage());
         
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Student Records");
+        setBackground(new Color(255, 51, 51));
+        setForeground(Color.red);
         setResizable(false);
 
         // top panel
@@ -89,15 +90,23 @@ public class StudentRecords extends JFrame {
 
         buttonOpen.setText("Open File");
         buttonOpen.addActionListener(this::buttonOpenActionPerformed);
+        buttonOpen.setBackground(colorButton);
+        buttonOpen.setFont(fontButton);
 
         buttonShow.setText("Show Database");
         buttonShow.setEnabled(false);
         buttonShow.addActionListener(this::buttonShowActionPerformed);
+        buttonShow.setBackground(colorButton);
+        buttonShow.setFont(fontButton);
 
-        labelTitle.setText("Student Records");
-        labelTitle.setFont(new java.awt.Font("Tahoma", 1, 24));
+        labelTitle.setText("STUDENT RECORDS");
+        labelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitle.setFont(new java.awt.Font("Verdana", 1, 24));
 
         GroupLayout panelTitleLayout = new GroupLayout(panelTitle);
+        panelTitle.setBackground(new Color(255, 102, 102));
+        panelTitle.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        
         panelTitle.setLayout(panelTitleLayout);
         panelTitleLayout.setHorizontalGroup(
                 panelTitleLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -106,7 +115,7 @@ public class StudentRecords extends JFrame {
                                 .addComponent(labelTitle)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE,
                                         Short.MAX_VALUE)
-                                .addComponent(labelFileOpen, GroupLayout.PREFERRED_SIZE, 159,
+                                .addComponent(labelFileOpen, GroupLayout.PREFERRED_SIZE, 160,
                                         GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(buttonOpen, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
@@ -127,9 +136,9 @@ public class StudentRecords extends JFrame {
                                                         .addGroup(panelTitleLayout
                                                                 .createParallelGroup(GroupLayout.Alignment.BASELINE)
                                                                 .addComponent(buttonOpen, GroupLayout.PREFERRED_SIZE,
-                                                                        40, GroupLayout.PREFERRED_SIZE)
+                                                                        30, GroupLayout.PREFERRED_SIZE)
                                                                 .addComponent(buttonShow, GroupLayout.PREFERRED_SIZE,
-                                                                        40, GroupLayout.PREFERRED_SIZE))))
+                                                                        30, GroupLayout.PREFERRED_SIZE))))
                                         .addGroup(panelTitleLayout.createSequentialGroup()
                                                 .addContainerGap()
                                                 .addComponent(labelTitle)))
@@ -138,6 +147,7 @@ public class StudentRecords extends JFrame {
         panelAdd.setBorder(BorderFactory.createTitledBorder(null, "Add a New Student Record",
                 TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION,
                 new java.awt.Font("Tahoma", 1, 11)));
+//        panelAdd.setBackground(new Color(255, 153, 153));
 
         labelAddID.setText("Student ID");
         textAddID.setEnabled(false);
@@ -172,6 +182,8 @@ public class StudentRecords extends JFrame {
         buttonAdd.setText("Add Student");
         buttonAdd.setEnabled(false);
         buttonAdd.addActionListener(this::buttonAddActionPerformed);
+        buttonAdd.setBackground(colorButton);
+        buttonAdd.setFont(fontButton);
 
         GroupLayout panelAddLayout = new GroupLayout(panelAdd);
         panelAdd.setLayout(panelAddLayout);
@@ -302,10 +314,14 @@ public class StudentRecords extends JFrame {
         buttonSearch.setText("Search by ID");
         buttonSearch.setEnabled(false);
         buttonSearch.addActionListener(this::buttonSearchActionPerformed);
+        buttonSearch.setBackground(colorButton);
+        buttonSearch.setFont(fontButton);
 
         buttonDelete.setText("Delete Record");
         buttonDelete.setEnabled(false);
         buttonDelete.addActionListener(this::buttonDeleteActionPerformed);
+        buttonDelete.setBackground(colorButton);
+        buttonDelete.setFont(fontButton);
 
         GroupLayout panelViewLayout = new GroupLayout(panelView);
         panelView.setLayout(panelViewLayout);
@@ -520,6 +536,15 @@ public class StudentRecords extends JFrame {
             }
         }
     }
+        
+    // clear the forms
+    private void clearForm(javax.swing.JPanel container){
+        for (java.awt.Component component : container.getComponents()) {
+            if (component instanceof javax.swing.JTextField) {
+                ((javax.swing.JTextField) component).setText("");
+            }
+        }
+    }
 
     // Show Database function
     private void showDatabaseTable() {
@@ -527,15 +552,15 @@ public class StudentRecords extends JFrame {
         String access_db_table = "table1";
         DefaultTableModel tableModel = new DefaultTableModel();
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+        rs = null;
 
         try {
             con = DriverManager.getConnection("jdbc:ucanaccess://" + file);
             query = String.format("SELECT * FROM %s", access_db_table);
             preparedStatement = con.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
+            rs = preparedStatement.executeQuery();
 
-            ResultSetMetaData metaData = resultSet.getMetaData();
+            ResultSetMetaData metaData = rs.getMetaData();
             int columns = metaData.getColumnCount();
 
             // Add column names to the table model
@@ -544,24 +569,28 @@ public class StudentRecords extends JFrame {
             }
 
             // Add data rows to the table model
-            while (resultSet.next()) {
+            while (rs.next()) {
                 Object[] rowData = new Object[columns];
                 for (int i = 1; i <= columns; i++) {
-                    rowData[i - 1] = resultSet.getString(i);
+                    rowData[i - 1] = rs.getString(i);
                 }
                 tableModel.addRow(rowData);
             }
 
             // Create a JTable with the populated table model
             JTable table = new JTable(tableModel);
+            table.setPreferredScrollableViewportSize(new Dimension(1000, 300)); // Set preferred size
 
             // Display the table in a JFrame with JScrollPane
             JFrame frame = new JFrame("Table Data");
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            JScrollPane scrollPane = new JScrollPane(table);
+            scrollPane.setPreferredSize(new Dimension(1000, 300));
             frame.getContentPane().add(new JScrollPane(table));
+            frame.setIconImage(img.getImage());
+            frame.setVisible(true);
             frame.setLocationRelativeTo(null); // Center the frame
             frame.pack();
-            frame.setVisible(true);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -569,8 +598,7 @@ public class StudentRecords extends JFrame {
         } finally {
             // Close resources (PreparedStatement, ResultSet, Connection) in a finally block if needed
             try {
-                if (con != null)
-                    con.close();
+                if (con != null) con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -611,6 +639,7 @@ public class StudentRecords extends JFrame {
             // Checking if the inputs are properly added
             if (a == 1) {
                 JOptionPane.showMessageDialog(this, "Student Record Added");
+                clearForm(panelAdd);
             } else {
                 JOptionPane.showMessageDialog(this, "Error in Inserting Data", "Insertion Error",
                         JOptionPane.ERROR_MESSAGE);
@@ -683,10 +712,9 @@ public class StudentRecords extends JFrame {
                 textViewEnrollment.setText(s9);
                 buttonDelete.setEnabled(true);
 
-            } else {
-                // Student not found
+            } else {    // Student not found
                 JOptionPane.showMessageDialog(this, "Student Not Found", "Error", JOptionPane.ERROR_MESSAGE);
-                textViewFirst.setText(""); // Clear the text field or handle accordingly
+                clearForm(panelView);       // Clear the text field or handle accordingly
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -799,6 +827,10 @@ public class StudentRecords extends JFrame {
     private ResultSet rs;
     private String openedFileName;
     private File file;
+    
+    private Color colorButton = new Color(255, 255, 153);
+    private Font fontButton = new Font("Dialog", 1, 12);
+    private ImageIcon img = new ImageIcon(getClass().getResource("logo.png"));
 
     // JVariables declaration
     private JButton buttonAdd, buttonDelete, buttonOpen, buttonSearch, buttonShow;
