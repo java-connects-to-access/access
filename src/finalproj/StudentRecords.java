@@ -1,15 +1,12 @@
 package finalproj;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class StudentRecords extends JFrame {
 
@@ -608,6 +605,7 @@ public class StudentRecords extends JFrame {
     // Function for adding a student record
     private void addStudent() {
         String q1, q2, q3, q4, q5, q6, q7, q8, q9, q10;
+        java.util.ArrayList<String> error_flags = new java.util.ArrayList<String>();
 
         // Storing Values of Input in a String
         q1 = textAddID.getText();
@@ -631,18 +629,40 @@ public class StudentRecords extends JFrame {
             // Connecting to Database
             con = DriverManager.getConnection("jdbc:ucanaccess://" + file);
             Statement st = con.createStatement();
+            
+            // form validation raise an error dialog if wrong format
+            if (!(java.util.regex.Pattern.compile("^\\d{4}-0\\d{4}-[A-Za-z]{2}-\\d$").matcher(textAddID.getText()).matches())) error_flags.add("* Invalid ID format, must be 20xx-0xxxx-MN-0");
+            if (!(java.util.regex.Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}$").matcher(textAddMail.getText()).matches())) {
+                    error_flags.add("* Invalid email format");
+                }
+            if (!(java.util.regex.Pattern.compile("^0\\d{10}$").matcher(textAddPhone.getText()).matches())) {
+                error_flags.add("* The ID must be an 11-digit mobile number starting with 0!");
+            }
+            
+            if (!error_flags.isEmpty()) {
+                StringBuilder errorMessage = new StringBuilder("Validation Errors:\n");
+                for (String error : error_flags) {
+                        errorMessage.append(error).append("\n");
+                }
+                JOptionPane.showMessageDialog(this, errorMessage.toString(), "Validation Error", JOptionPane.ERROR_MESSAGE);
+              
+            }
+
+            
 
             // Inserting the Inputs in the Database
-            int a = st.executeUpdate("Insert into Table1 values('" + q2 + "','" + q3 + "','" + q4 + "','" + q5 + "','"
-                    + q6 + "','" + q7 + "','" + q8 + "','" + q1 + "','" + q9 + "','" + q10 + "')");
+            else{
+                int a = st.executeUpdate("Insert into Table1 values('" + q2 + "','" + q3 + "','" + q4 + "','" + q5 + "','"
+                        + q6 + "','" + q7 + "','" + q8 + "','" + q1 + "','" + q9 + "','" + q10 + "')");
 
-            // Checking if the inputs are properly added
-            if (a == 1) {
-                JOptionPane.showMessageDialog(this, "Student Record Added");
-                clearForm(panelAdd);
-            } else {
-                JOptionPane.showMessageDialog(this, "Error in Inserting Data", "Insertion Error",
-                        JOptionPane.ERROR_MESSAGE);
+                // Checking if the inputs are properly added
+                if (a == 1) {
+                    JOptionPane.showMessageDialog(this, "Student Record Added");
+                    clearForm(panelAdd);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error in Inserting Data", "Insertion Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
         // If there's an error in connecting to Database
@@ -655,6 +675,7 @@ public class StudentRecords extends JFrame {
                 e.printStackTrace();
             }
         }
+        
     }
 
     // Function to check if fields are empty
