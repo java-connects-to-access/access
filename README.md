@@ -19,6 +19,7 @@ Welcome to the COMP-009 Java Access Connector repository! This repository contai
     - [Editors](#editors)
     - [Scriptwriters](#scriptwriters)
     - [Presenters](#presenters)
+- [Final Product](#final-product)
 
 
 ## Getting Started
@@ -153,7 +154,7 @@ A big thank you to the hardworking individuals who have contributed to the succe
 ### Scriptwriters
 * Dane Datuin
 * Joanna Dellava
-* Queenie Betonio
+* [Queenie Betonio](https://github.com/Queenie2701)
 
 ### Presenters
 * Necolene Alberto
@@ -165,6 +166,17 @@ A big thank you to the hardworking individuals who have contributed to the succe
 
 Special thanks to all the contributors, whether big or small, for their time and commitment to making this project better. Your contributions are highly valued!
 If you have contributed and your name is missing, please feel free to add yourself to this list in your pull request or let us know, and we'll make sure to include you.
+
+## Final Product
+
+**Please see the [Release section](https://github.com/java-connects-to-access/access/releases) to download the final product.**
+
+After a couple of days spent in late-night stress, developing, writing, and creating presentations for COMP-009: Object Oriented Programming, we are thrilled to showcase the fruits of dedication among the members of Group 1 - BSCS 2-1 AY 2023-2024.
+
+<p align="center">
+    <img src="docs/assets/img/StudentRecords_screenshot.png" alt="Access" width="720px"/>
+</p>
+
 
 
 
