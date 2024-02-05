@@ -7,6 +7,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.io.File;
+import java.time.*;
+import java.time.format.*;
 
 public class StudentRecords extends JFrame {
 
@@ -624,6 +626,23 @@ public class StudentRecords extends JFrame {
             JOptionPane.showMessageDialog(null, "Enter all required values", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        // Define the date format pattern
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
+        // Attempt to parse the enrollment date
+        try {
+            LocalDate.parse(textAddEnrollment.getText(), dateFormatter);
+        } catch (DateTimeParseException e) {
+            error_flags.add("* Invalid enrollment date format, must be MM/DD/YYYY");
+        }
+
+        // Attempt to parse the DOB
+        try {
+            LocalDate.parse(textAddDOB.getText(), dateFormatter);
+        } catch (DateTimeParseException e) {
+            error_flags.add("* Invalid date of birth format, must be MM/DD/YYYY");
+        }
 
         try {
             // Connecting to Database
@@ -645,11 +664,8 @@ public class StudentRecords extends JFrame {
                         errorMessage.append(error).append("\n");
                 }
                 JOptionPane.showMessageDialog(this, errorMessage.toString(), "Validation Error", JOptionPane.ERROR_MESSAGE);
-              
             }
-
             
-
             // Inserting the Inputs in the Database
             else{
                 int a = st.executeUpdate("Insert into Table1 values('" + q2 + "','" + q3 + "','" + q4 + "','" + q5 + "','"
