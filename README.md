@@ -174,7 +174,7 @@ If you have contributed and your name is missing, please feel free to add yourse
 After a couple of days spent in late-night stress, developing, writing, and creating presentations for COMP-009: Object Oriented Programming, we are thrilled to showcase the fruits of dedication among the members of Group 1 - BSCS 2-1 AY 2023-2024.
 
 <p align="center">
-    <img src="screenshot.png" alt="Access" width="720px"/>
+    <img src="docs/assets/img/screenshot.png" alt="Access" width="720px"/>
 </p>
 
 
